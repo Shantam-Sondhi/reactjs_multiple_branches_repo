@@ -1,5 +1,81 @@
 {
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
-  "projects": {}
+  "projects": {
+    "multibranches_app": {
+      "root": "apps",
+      "sourceRoot": "apps",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/next:build",
+          "options": {
+            "root": "apps",
+            "outputPath": "dist/apps"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "multibranches_app:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "multibranches_app:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "builder": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "multibranches_app:build:production"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/*/.{ts,tsx}"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["type:feature"]
+    },
+    "component-library": {
+      "root": "libs/component-library",
+      "sourceRoot": "libs/component-library/src",
+      "projectType": "library",
+      "generators": {},
+      "targets": {
+        "storybook": {
+          "executor": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/react",
+            "staticDir": ["./apps/public"],
+            "port": 4300,
+            "config": {
+              "configFolder": "libs/component-library/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    }
+  }
 }

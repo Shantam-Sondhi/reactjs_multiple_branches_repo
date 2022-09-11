@@ -3,18 +3,35 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
+    "declaration": true,
     "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": ["dom", "dom.iterable", "esnext", "es2017"],
+    "importHelpers": true,
+    "allowJs": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "noEmitHelpers": false,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@pages/*": ["apps/pages/*"],
+      "@component-library/*": ["libs/component-library/src/lib/*"],
+      "@component-library": ["libs/component-library/src/index.ts"]
+    }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules"]
 }

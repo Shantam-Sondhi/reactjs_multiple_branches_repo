@@ -1,46 +1,53 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "multibranches-app",
+  "npmScope": "multibranches_app",
   "affected": {
     "defaultBase": "develop"
   },
+  "cli": {
+    "defaultCollection": "@nrwl/workspace"
+  },
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/nx-cloud",
+      "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
-        "accessToken": "MjdlOTE4OTAtNWU2OC00OGNhLWJlNzEtMTU5MjA4ZjI1ZDllfHJlYWQtd3JpdGU="
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "canTrackAnalytics": false,
+        "showUsageWarnings": true
       }
     }
   },
-  "targetDefaults": {
-    "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+  "targetDependencies": {
+    "build": [{
+      "target": "build",
+      "projects": "dependencies"
+    }]
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "css",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "css"
+      },
+      "library": {
+        "style": "css",
+        "linter": "eslint"
+      }
     }
   },
-  "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
-    "production": [
-      "default"
-    ],
-    "sharedGlobals": []
-  },
-  "workspaceLayout": {
-    "appsDir": "packages",
-    "libsDir": "packages"
-  }
+  "defaultProject": "multibranches_app"
 }
