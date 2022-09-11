@@ -1,14 +1,8 @@
-import ReactDOM from 'react-dom';
+import React from "react";
 import LandingPageApp from './Landing/main';
 
-import { useRouter } from "next/router";
-
-
 const Home = () => {
-  const route = useRouter();
-  return <div>
-    <LandingPageApp />
-  </div>;
-}
+  return <div><LandingPageApp /></div>;
+};
 
 export default Home;
