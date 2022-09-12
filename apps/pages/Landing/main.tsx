@@ -3,8 +3,6 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
 import { useRouter } from 'next/router'
-import Dashboard from "@pages/Student/Dashboard";
-import CoachDashboard from "@pages/Coach/Dashboard";
 
 const useStyles = makeStyles((theme) => ({
     root: {
