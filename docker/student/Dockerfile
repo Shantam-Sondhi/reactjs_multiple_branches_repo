@@ -4,10 +4,10 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install
 #common files and folders
-COPY apps/pages/.babelrc ./apps/pages/.babelrc
-COPY apps/pages/.eslintrc.json ./apps/pages/.eslintrc.json
-COPY apps/pages/next-env.d.ts ./apps/pages/next-env.d.ts
-COPY apps/pages/tsconfig.json ./apps/pages/tsconfig.json
+COPY apps/.babelrc ./apps/.babelrc
+COPY apps/.eslintrc.json ./apps/.eslintrc.json
+COPY apps/next-env.d.ts ./apps/next-env.d.ts
+COPY apps/tsconfig.json ./apps/tsconfig.json
 COPY apps/pages/Landing ./apps/pages/Landing
 COPY libs ./libs
 COPY babel1.config.json ./babel1.config.json
