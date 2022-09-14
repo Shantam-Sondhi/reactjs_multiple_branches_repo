@@ -12,7 +12,6 @@ COPY apps/pages/Landing ./apps/pages/Landing
 COPY libs ./libs
 COPY babel1.config.json ./babel1.config.json
 COPY next.config.js ./next.config.js
-COPY scripts ./scripts
 COPY nx.json ./nx.json
 COPY tsconfig.base.json ./tsconfig.base.json
 COPY webpack.config.ts ./webpack.config.ts
